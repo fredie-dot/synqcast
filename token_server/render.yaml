@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: synqcast-token-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: LIVEKIT_API_KEY
+        value: devkey
+      - key: LIVEKIT_API_SECRET
+        value: secret
