@@ -12,3 +12,5 @@ services:
         value: devkey
       - key: LIVEKIT_API_SECRET
         value: secret
+    env: node
+    nodeVersion: 20
