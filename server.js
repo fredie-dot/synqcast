@@ -51,15 +51,29 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'SynqCast LiveKit Token Server',
+    version: '1.0.0',
+    endpoints: ['/health', '/token'],
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // For Vercel deployment, export the app
 module.exports = app;
 
-// For local development, start the server
-if (process.env.NODE_ENV !== 'production') {
-  const port = process.env.PORT || 3000;
-  app.listen(port, '0.0.0.0', () => {
-    console.log(`Token server running on http://0.0.0.0:${port}`);
-    console.log(`Accessible from your network at: http://192.168.1.55:${port}`);
-    console.log('Use this URL in your Flutter app for token generation');
-  });
-}
+// Always start the server (for both local and cloud deployment)
+const port = process.env.PORT || 3000;
+app.listen(port, '0.0.0.0', () => {
+  console.log(`🚀 SynqCast Token Server running on port ${port}`);
+  console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📡 Server ready to accept requests`);
+  
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`💻 Accessible from your network at: http://192.168.1.55:${port}`);
+    console.log('💡 Use this URL in your Flutter app for token generation');
+  }
+});
