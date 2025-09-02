@@ -12,16 +12,16 @@ class LiveKitConfig {
   static const String webServerUrl = 'ws://localhost:7880';
   static const String webTokenServerUrl = 'http://localhost:3000';
   
-  // Production settings (replace with your LiveKit Cloud credentials)
+  // Production settings (cloud servers)
   static const String prodServerUrl = 'wss://your-project.livekit.cloud';
-  static const String prodTokenServerUrl = 'https://synqcast-7kmiij67i-freds-projects-3325ed.vercel.app';
+  static const String prodTokenServerUrl = 'https://synqcast-token-server.onrender.com';
   
   // API Keys (replace with your actual keys)
   static const String apiKey = 'devkey';
   static const String apiSecret = 'secret';
   
-  // Environment
-  static const bool isProduction = false;
+  // Environment - NOW USING CLOUD SERVER!
+  static const bool isProduction = true;
   
   // Get current server URL based on environment and platform
   static String get serverUrl {
